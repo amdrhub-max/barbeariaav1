@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Barbearia AV1 – André Moura · Pirituba, São Paulo</title>
+<meta name="description" content="Barbearia de bairro em Pirituba há 25 anos. Corte, barba e corte infantil com André Moura, café passado na hora e conversa boa. 4,9 no Google. Agende pelo WhatsApp.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Great+Vibes&amp;family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;background:#0B0B0B}
+body{margin:0;background:#0B0B0B;color:#E8E8E8;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#C8892B;text-decoration:none}
+a:hover{color:#E0A548}
+img{display:block;max-width:100%}
+@keyframes pole{from{background-position:0 0}to{background-position:56.57px 0}}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:.7}}
+</style>
+</helmet>
+
+<div style="background:#0B0B0B;color:#E8E8E8;overflow-x:hidden;font-family:Inter,system-ui,sans-serif">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:{{ headerBg }};border-bottom:1px solid {{ headerLine }};backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s ease, border-color .3s ease">
+  <div style="max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#topo" aria-label="Barbearia AV1 – André Moura – início" style="display:flex;align-items:center;flex-shrink:0"><img src="assets/logo.webp" alt="Barbearia AV1 – André Moura" width="1000" height="285" style="display:block;height:clamp(44px,5vw,56px);width:auto"></a>
+    <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Principal" style="display:flex;align-items:center;gap:30px">
+        <sc-for list="{{ nav }}" as="l" hint-placeholder-count="6">
+          <a href="{{ l.href }}" style="color:#CFCFCF;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase" style-hover="color:#C8892B">{{ l.label }}</a>
+        </sc-for>
+        <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="background:#C8892B;color:#0B0B0B;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;border-radius:2px;transition:box-shadow .3s ease, background .3s ease;display:inline-flex;align-items:center;gap:10px" style-hover="background:#D99A3A;color:#0B0B0B;box-shadow:0 0 28px rgba(200,137,43,.55)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agendar</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Abrir menu" aria-expanded="{{ menuOpen }}" style="width:48px;height:48px;background:transparent;border:1px solid #3A3A3A;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer">
+        <span style="display:block;width:20px;height:1.5px;background:#E8E8E8"></span>
+        <span style="display:block;width:20px;height:1.5px;background:#E8E8E8"></span>
+        <span style="display:block;width:14px;height:1.5px;background:#C8892B"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="Menu" style="background:#0B0B0B;border-top:1px solid #222;padding:12px 20px 28px;display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="color:#E8E8E8;font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.06em;padding:12px 0;border-bottom:1px solid #1E1E1E">{{ l.label }}</a>
+      </sc-for>
+      <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="margin-top:22px;background:#C8892B;color:#0B0B0B;text-align:center;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:18px;border-radius:2px;display:inline-flex;align-items:center;gap:10px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agende pelo WhatsApp</a>
+    </nav>
+  </sc-if>
+</header>
+
+<section id="topo" data-screen-label="01 Hero" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0B0B0B">
+  <img data-photo="" src="assets/salao-hd-v3.webp" alt="Salão da Barbearia AV1 com cadeiras de barbeiro e espelhos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% center;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transform:scale(1.04)">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,.35) 35%,rgba(11,11,11,.85) 72%,#0B0B0B 100%)"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,11,.9) 0%,rgba(11,11,11,.78) 30%,rgba(11,11,11,.4) 55%,rgba(11,11,11,.1) 75%,transparent 100%)"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 30%,rgba(200,137,43,.2),transparent 55%)"></div>
+  <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:140px 20px clamp(56px,9vh,110px)">
+    <div data-reveal="" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(200,137,43,.5);background:rgba(11,11,11,.55);padding:9px 16px;border-radius:40px;font-size:13px;letter-spacing:.04em;color:#E8E8E8">
+      <span style="color:#C8892B">★</span><span style="white-space:nowrap;font-size:clamp(12px,3.4vw,13px)">4,9 no Google</span>
+    </div>
+    <h1 data-reveal="" style="margin:22px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(46px,6.8vw,86px);line-height:.95;letter-spacing:.01em;max-width:16ch;text-wrap:balance">Barbearia AV1 em Pirituba SP</h1>
+    <p data-reveal="" style="margin:16px 0 0;font-family:'Playfair Display',serif;font-size:clamp(24px,3.4vw,39px);line-height:1.3;color:#E8E8E8;max-width:28ch;text-wrap:balance">Tradição, Estilo e cuidado em cada detalhe</p>
+    <p data-reveal="" style="margin:18px 0 0;font-size:clamp(16px,1.6vw,19px);line-height:1.65;color:#CFCFCF;max-width:46ch;text-wrap:pretty">Há 25 anos cortando cabelo e barba em Pirituba. Aqui o pai corta, o filho corta e, logo, o neto também.</p>
+    <div data-reveal="" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+      <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;flex:1 1 240px;max-width:340px;background:#C8892B;color:#0B0B0B;font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;transition:box-shadow .3s ease, background .3s ease;gap:10px" style-hover="background:#D99A3A;color:#0B0B0B;box-shadow:0 0 36px rgba(200,137,43,.6)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agende pelo WhatsApp</a>
+      <a href="#servicos" style="display:inline-flex;align-items:center;justify-content:center;flex:1 1 180px;max-width:240px;min-height:58px;padding:0 26px;border:1px solid #4A4A4A;color:#E8E8E8;font-size:14px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border-radius:2px" style-hover="border-color:#C8892B;color:#C8892B">Ver serviços</a>
+    </div>
+    
+  </div>
+</section>
+
+<div aria-hidden="true">{{ poleWide }}</div>
+
+<section id="sobre" data-screen-label="02 Sobre" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#0B0B0B">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,90px);align-items:center">
+    <div data-reveal="" style="position:relative;max-width:460px;width:100%;justify-self:center">
+      <div style="position:absolute;inset:-14px 14px 14px -14px;border:1px solid rgba(200,137,43,.45)"></div>
+      <video ref="{{ videoRef }}" data-photo="" src="assets/ambiente.mp4" poster="assets/fachada.webp" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo do ambiente da Barbearia AV1" style="position:relative;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;background:#1A1A1A;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video>
+      <button onClick="{{ toggleSound }}" aria-label="{{ soundLabel }}" aria-pressed="{{ soundOn }}" style="position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border:1px solid rgba(200,137,43,.6);border-radius:40px;background:rgba(11,11,11,.75);backdrop-filter:blur(6px);color:#E8E8E8;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:box-shadow .3s ease, border-color .3s ease" style-hover="border-color:#C8892B;box-shadow:0 0 22px rgba(200,137,43,.45)">
+        <sc-if value="{{ soundOff }}" hint-placeholder-val="{{ true }}">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8892B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="#C8892B"></polygon><path d="M16.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 6a8.5 8.5 0 0 1 0 12"></path></svg>
+        </sc-if>
+        <sc-if value="{{ soundOn }}" hint-placeholder-val="{{ false }}">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8E8E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="#E8E8E8"></polygon><line x1="16" y1="9" x2="22" y2="15"></line><line x1="22" y1="9" x2="16" y2="15"></line></svg>
+        </sc-if>{{ soundText }}
+      </button>
+    </div>
+    <div data-reveal="">
+      <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">Nossa história</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;letter-spacing:.01em;text-wrap:balance">Barbearia de bairro, do jeito que a gente gosta</h2>
+      <div style="margin-top:22px">{{ poleShort }}</div>
+      <p style="margin:26px 0 0;font-size:17px;line-height:1.75;color:#C4C4C4;max-width:56ch;text-wrap:pretty">Há mais de 25 anos André Moura cuida de cabelo e barba em Pirituba. A AV1 nasceu desse ofício: cadeira firme, mão caprichosa e conversa boa. Muitos clientes hoje trazem os filhos e os netos.</p>
+      <p style="margin:18px 0 0;font-size:17px;line-height:1.75;color:#C4C4C4;max-width:56ch;text-wrap:pretty">Tem gente sentando na nossa cadeira há mais de 15 anos.</p>
+      <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,56px)">
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;color:#E8E8E8">25+</div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9A9A9A;margin-top:6px">anos de ofício</div></div>
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;color:#E8E8E8">4,9<span style="color:#C8892B;font-size:34px"> ★</span></div><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9A9A9A;margin-top:6px">no Google</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kids" data-screen-label="05 Kids" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#161310;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 15% 20%,rgba(200,137,43,.18),transparent 55%)"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,90px);align-items:center">
+    <div data-reveal="" style="order:{{ kidsTextOrder }}">
+      <div style="font-family:'Great Vibes',cursive;font-size:40px;color:#C8892B;line-height:1">Infantil</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">O primeiro corte a gente nunca esquece</h2>
+      <div style="margin-top:22px">{{ poleShort }}</div>
+      <p style="margin:26px 0 0;font-size:17px;line-height:1.75;color:#CFC8BF;max-width:52ch;text-wrap:pretty">Criança que chora no salão costuma rir aqui. Os pequenos sentam na cadeira de carrinho e o corte vira passeio. Atendemos com paciência, brincadeira e acabamento de gente grande.</p>
+      <blockquote style="margin:30px 0 0;padding:0;font-family:'Playfair Display',serif;font-style:italic;font-size:19px;line-height:1.55;color:#E8E8E8;max-width:46ch">“O André é literalmente o melhor cabeleireiro infantil que eu já conheci.”<span style="display:block;margin-top:10px;font-family:Inter,sans-serif;font-style:normal;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C8892B">Paulo Ambrozio, via Google</span></blockquote>
+      <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20corte%20infantil." target="_blank" rel="noopener" style="margin-top:36px;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;background:#C8892B;color:#0B0B0B;font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;transition:box-shadow .3s ease, background .3s ease;gap:10px" style-hover="background:#D99A3A;color:#0B0B0B;box-shadow:0 0 36px rgba(200,137,43,.6)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agendar corte infantil</a>
+    </div>
+    <div data-reveal="" style="display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;height:clamp(440px,52vw,620px)">
+      <div style="grid-row:span 2;overflow:hidden;border-radius:180px 180px 0 0"><video data-photo="" data-muted-loop="" src="assets/kids-1.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo de corte infantil na Barbearia AV1" style="display:block;width:100%;height:100%;object-fit:cover;background:#1A1A1A;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video></div>
+      <div style="overflow:hidden"><video data-photo="" data-muted-loop="" src="assets/kids-2.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo de criança cortando o cabelo na cadeira carrinho" style="display:block;width:100%;height:100%;object-fit:cover;background:#1A1A1A;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video></div>
+      <div style="overflow:hidden"><video data-photo="" data-muted-loop="" src="assets/kids-3.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo do resultado de um corte infantil" style="display:block;width:100%;height:100%;object-fit:cover;background:#1A1A1A;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" data-screen-label="03 Serviços" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#141414;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:url('assets/tex-paineis.webp') center/600px repeat;opacity:.12"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto">
+    <div data-reveal="" style="text-align:center;max-width:720px;margin:0 auto">
+      <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">Serviços</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">O que a gente faz</h2>
+      <div style="margin:22px auto 0;width:120px">{{ poleShort }}</div>
+      <p style="margin:24px auto 0;font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#BDBDBD;line-height:1.5">Corte, barba e o capricho de quem faz isso há 25 anos.</p>
+    </div>
+    <div style="margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1px;background:#2A2A2A;border:1px solid #2A2A2A">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <article data-reveal="" style="background:#111111;padding:clamp(30px,4vw,44px);display:flex;flex-direction:column;gap:14px;min-height:260px;transition:background .35s ease" style-hover="background:#1A1A1A">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.1em;color:#C8892B">{{ s.n }}</span>
+            <span style="width:34px;height:1px;background:#C8892B"></span>
+          </div>
+          <h3 style="margin:8px 0 0;font-family:'Playfair Display',serif;font-weight:400;font-size:30px;line-height:1.1;color:#E8E8E8">{{ s.name }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#ABABAB;text-wrap:pretty;flex:1">{{ s.desc }}</p>
+          <a href="{{ s.wa }}" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#C8892B" style-hover="color:#E8E8E8"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agendar este serviço <span aria-hidden="true">→</span></a>
+        </article>
+      </sc-for>
+    </div>
+    <div data-reveal="" style="margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+      <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 36px;background:#C8892B;color:#0B0B0B;font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;transition:box-shadow .3s ease, background .3s ease;gap:10px" style-hover="background:#D99A3A;color:#0B0B0B;box-shadow:0 0 36px rgba(200,137,43,.6)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Bora marcar?</a>
+      <span style="font-size:13px;color:#9A9A9A">Valores e horários pelo WhatsApp, de terça a domingo.</span>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" data-screen-label="04 Experiência" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#0B0B0B">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,80px);align-items:end">
+      <div data-reveal="">
+        <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">O clima da casa</div>
+        <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">Senta, que o café<br>já vem</h2>
+        <div style="margin-top:22px">{{ poleShort }}</div>
+      </div>
+      <p data-reveal="" style="margin:0;font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2vw,23px);line-height:1.55;color:#C4C4C4;text-wrap:pretty">O café sai na hora e a conversa não tem hora pra acabar. Na espera, sempre tem um vizinho pra dar oi, um amigo dos tempos de escola ou alguém que você conhece de vista há anos. O papo começa no futebol e termina na vida. Aqui todo mundo se chama pelo nome.</p>
+    </div>
+    <div style="margin-top:clamp(44px,6vw,72px);display:grid;grid-template-columns:{{ expCols }};gap:16px">
+      <figure data-reveal="" style="margin:0;position:relative;overflow:hidden">
+        <img data-photo="" src="assets/sofa-hd-v2.webp" alt="Área de espera da Barbearia AV1" style="width:100%;height:clamp(260px,38vw,460px);object-fit:cover;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .8s ease" style-hover="transform:scale(1.04)">
+      </figure>
+      <figure data-reveal="" style="margin:0;position:relative;overflow:hidden">
+        <img data-photo="" src="assets/cafe-hd.webp" alt="Cafezinho cortesia sendo servido" style="object-position:center 60%;width:100%;height:clamp(260px,38vw,460px);object-fit:cover;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .8s ease" style-hover="transform:scale(1.04)">
+        <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(11,11,11,.9));font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8E8E8">Cafezinho cortesia</figcaption>
+      </figure>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0;border-top:1px solid #262626">
+      <sc-for list="{{ perks }}" as="p" hint-placeholder-count="4">
+        <div data-reveal="" style="padding:28px 24px 28px 0;border-bottom:1px solid #262626;display:flex;flex-direction:column;gap:10px">
+          <div style="width:8px;height:8px;background:#C8892B;transform:rotate(45deg)"></div>
+          <h3 style="margin:6px 0 0;font-family:'Playfair Display',serif;font-weight:400;font-size:23px;color:#E8E8E8">{{ p.t }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#A8A8A8;text-wrap:pretty">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+
+<section id="equipe" data-screen-label="06 Equipe" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#0B0B0B">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,90px);align-items:center">
+    <div data-reveal="" style="position:relative;max-width:440px;width:100%;justify-self:center">
+      <img data-photo="" src="assets/andre-moura-v2.webp" alt="André Moura, fundador da Barbearia AV1, atendendo um cliente" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 22%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)">
+      <div style="position:absolute;left:-1px;bottom:-1px;background:#0B0B0B;padding:18px 24px 0 0">
+        <div style="font-family:'Great Vibes',cursive;font-size:clamp(32px,8vw,42px);color:#C8892B;line-height:1">André Moura</div>
+        <div style="margin-top:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#BDBDBD">Fundador · Barbeiro</div>
+      </div>
+    </div>
+    <div data-reveal="">
+      <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">Equipe</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">Quem vai te atender</h2>
+      <div style="margin-top:22px">{{ poleShort }}</div>
+      <p style="margin:26px 0 0;font-size:17px;line-height:1.75;color:#C4C4C4;max-width:54ch;text-wrap:pretty">André Moura comanda a cadeira há 25 anos e formou cada barbeiro da casa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" data-screen-label="07 Galeria" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#111111">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px">
+      <div>
+        <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">Galeria</div>
+        <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">Feito na cadeira da AV1</h2>
+      </div>
+    </div>
+    <div style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat({{ galleryCols }},minmax(0,1fr));gap:10px">
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <video data-photo="" data-muted-loop="" src="assets/g-v1.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo do dia a dia na Barbearia AV1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Corte pompadour com degradê e barba grisalha" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-grisalho-v2.webp" alt="Corte pompadour com degradê e barba grisalha" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Corte degradê com risco desenhado" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-degrade.webp" alt="Corte degradê com risco desenhado" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Cliente sorrindo com corte baixo e barba" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-oculos.webp" alt="Cliente sorrindo com corte baixo e barba" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:58% center;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Barbeiro finalizando penteado com escova" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-escova.webp" alt="Barbeiro finalizando penteado com escova" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Corte clássico social em quatro ângulos" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-classico-v2.webp" alt="Corte clássico social em quatro ângulos" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Acabamento na nuca com máquina" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-nuca.webp" alt="Acabamento na nuca com máquina" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Barba aparada com máquina" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-barba.webp" alt="Barba aparada com máquina" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <button data-gal="" onClick="{{ openLb }}" aria-label="Ampliar foto: Poste de barbeiro clássico" style="position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden"><img data-photo="" src="assets/g-poste.webp" alt="Poste de barbeiro clássico" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1);transition:transform .7s ease" style-hover="transform:scale(1.05)"></button>
+      </div>
+      <div style="position:relative;overflow:hidden;background:#1A1A1A;aspect-ratio:4/5">
+        <video data-photo="" data-muted-loop="" src="assets/g-v2.mp4" autoplay="" muted="" loop="" playsinline="" preload="auto" aria-label="Vídeo de corte de cabelo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos" data-screen-label="08 Depoimentos" style="position:relative;padding:clamp(80px,11vw,150px) 20px;background:#0B0B0B;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:url('assets/tex-pedra-v2.webp') center/cover;opacity:.12"></div>
+  <div style="position:relative;max-width:920px;margin:0 auto;text-align:center">
+    <h2 data-reveal="" style="margin:0 0 36px;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;color:#E8E8E8;text-wrap:balance">Quem senta aqui volta</h2>
+    <div data-reveal="">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(70px,10vw,110px);line-height:.9;color:#E8E8E8">4,9</div>
+      <div style="margin-top:6px;color:#C8892B;font-size:22px;letter-spacing:.2em">★★★★★</div>
+      <div style="margin-top:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9A9A9A">57 avaliações no Google</div>
+    </div>
+  </div>
+  <div style="position:relative;max-width:1240px;margin:48px auto 0">
+    <div ref="{{ trackRef }}" onScroll="{{ onTrackScroll }}" role="region" aria-roledescription="carrossel" aria-label="Avaliações de clientes no Google" tabindex="0" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+        <article style="flex:0 0 min(86%,340px);scroll-snap-align:start;background:#202124;border:1px solid #3C4043;border-radius:14px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:12px;text-align:left;font-family:Inter,system-ui,sans-serif">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div aria-hidden="true" style="width:40px;height:40px;border-radius:50%;background:{{ r.color }};color:#FFFFFF;display:grid;place-items:center;font-size:17px;font-weight:500;flex-shrink:0">{{ r.initial }}</div>
+            <div style="min-width:0">
+              <div style="font-size:15px;font-weight:500;color:#E8EAED;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</div>
+              <div style="font-size:12px;color:#9AA0A6;margin-top:2px">{{ r.meta }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span aria-label="5 de 5 estrelas" style="color:#FBBC04;font-size:15px;letter-spacing:1px">★★★★★</span>
+          </div>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#E8EAED;text-wrap:pretty;flex:1">{{ r.text }}</p>
+          <sc-if value="{{ r.hasService }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#2A2B2E;border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.5;color:#BDC1C6"><span style="color:#9AA0A6">Serviços</span><br>{{ r.service }}</div>
+          </sc-if>
+          <div style="display:flex;align-items:center;gap:8px;padding-top:6px;border-top:1px solid #3C4043;font-size:11px;letter-spacing:.06em;color:#9AA0A6">Avaliação publicada no Google</div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="margin-top:22px;display:flex;align-items:center;justify-content:center;gap:18px">
+      <button onClick="{{ prevReview }}" aria-label="Avaliações anteriores" style="width:48px;height:48px;border:1px solid #3A3A3A;background:#0B0B0B;color:#E8E8E8;font-size:18px;cursor:pointer;border-radius:50%" style-hover="border-color:#C8892B;color:#C8892B">←</button>
+      <div style="display:flex;gap:2px">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+          <button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="width:22px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0"><span style="display:block;width:{{ d.w }};height:3px;background:{{ d.bg }};transition:all .3s ease"></span></button>
+        </sc-for>
+      </div>
+      <button onClick="{{ nextReview }}" aria-label="Próximas avaliações" style="width:48px;height:48px;border:1px solid #3A3A3A;background:#0B0B0B;color:#E8E8E8;font-size:18px;cursor:pointer;border-radius:50%" style-hover="border-color:#C8892B;color:#C8892B">→</button>
+    </div>
+    <div style="margin-top:14px;text-align:center"><a href="https://www.google.com/maps/search/?api=1&amp;query=Barbearia+AV1+Andr%C3%A9+Moura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C8892B" style-hover="color:#E8E8E8">Ver todas no Google →</a></div>
+  </div>
+</section>
+
+<section id="produtos" data-screen-label="09 Produtos" style="position:relative;padding:clamp(70px,9vw,120px) 20px;background:#141414">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(36px,6vw,80px);align-items:center">
+    <div data-reveal="" style="order:{{ prodTextOrder }}">
+      <div style="font-family:'Great Vibes',cursive;font-size:34px;color:#C8892B;line-height:1">Produtos</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(40px,5.5vw,64px);line-height:.95;text-wrap:balance">Pro corte durar até a próxima visita</h2>
+      <p style="margin:22px 0 0;font-size:16px;line-height:1.75;color:#BDBDBD;max-width:50ch;text-wrap:pretty">Pomadas, balms, óleos e shampoos para barba e cabelo, à venda na barbearia. Pergunta pro seu barbeiro qual combina com o seu fio.</p>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ productTags }}" as="t" hint-placeholder-count="4">
+          <span style="border:1px solid #3A3A3A;padding:9px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFCFCF">{{ t }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="" style="position:relative;overflow:hidden;max-width:520px;width:100%;justify-self:center">
+      <img data-photo="" src="assets/produtos-hd.webp" alt="Vitrine de pomadas, óleos e shampoos para barba e cabelo vendidos na barbearia" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 60%;filter:grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)">
+    </div>
+  </div>
+</section>
+
+<section id="contato" data-screen-label="10 Localização" style="position:relative;scroll-margin-top:70px;padding:clamp(80px,11vw,150px) 20px;background:#0B0B0B">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="">
+      <div style="font-family:'Great Vibes',cursive;font-size:36px;color:#C8892B;line-height:1">Visite a gente</div>
+      <h2 style="margin:10px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:.95;text-wrap:balance">Localização e horários</h2>
+      <div style="margin-top:22px">{{ poleShort }}</div>
+    </div>
+    <div style="margin-top:clamp(40px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,48px)">
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:34px">
+        <div>
+          <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B">Endereço</div>
+          <p style="margin:12px 0 0;font-family:'Playfair Display',serif;font-size:clamp(19px,2.4vw,23px);line-height:1.45;color:#E8E8E8;text-wrap:pretty">Av. Elísio Cordeiro de Siqueira, 1113<br>Jardim Santo Elias · Pirituba, São Paulo/SP<br><span style="font-family:Inter,sans-serif;font-size:15px;color:#A8A8A8">CEP 05136-001</span></p>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+El%C3%ADsio+Cordeiro+de+Siqueira,+1113,+S%C3%A3o+Paulo" target="_blank" rel="noopener" style="margin-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C8892B" style-hover="color:#E8E8E8">Como chegar →</a>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B">Horários</div>
+          <div style="margin-top:14px;display:flex;flex-direction:column">
+            <sc-for list="{{ hours }}" as="h" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #222;font-size:16px">
+                <span style="color:#CFCFCF">{{ h.d }}</span><span style="color:{{ h.c }};font-variant-numeric:tabular-nums">{{ h.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B">Telefone / WhatsApp</div>
+          <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.04em;color:#E8E8E8;display:inline-flex;align-items:center;gap:10px" style-hover="color:#C8892B"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#C8892B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>(11) 96994-5003</a>
+        </div>
+      </div>
+      <div data-reveal="" style="position:relative;min-height:420px;border:1px solid #262626;overflow:hidden;background:#1A1A1A">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Barbearia+AV1+Av.+El%C3%ADsio+Cordeiro+de+Siqueira+1113+S%C3%A3o+Paulo" target="_blank" rel="noopener" aria-label="Abrir localização da Barbearia AV1 no Google Maps" style="position:absolute;inset:0;z-index:0;display:block;color:#E8E8E8">
+          <img src="assets/salao-hd-v3.webp" alt="" aria-hidden="true" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.6) brightness(.35)">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 24px 90px;text-align:center">
+            <svg aria-hidden="true" width="46" height="46" viewBox="0 0 24 24" fill="#C8892B"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"></path></svg>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:.04em;line-height:1">Barbearia AV1</div>
+            <div style="font-size:15px;line-height:1.6;color:#CFCFCF;max-width:30ch">Av. Elísio Cordeiro de Siqueira, 1113<br>Jardim Santo Elias · Pirituba · SP</div>
+          </div>
+        </a>
+        <iframe title="Mapa: Barbearia AV1 na Av. Elísio Cordeiro de Siqueira, 1113" src="https://www.google.com/maps?q=Barbearia%20AV1%2C%20Av.%20El%C3%ADsio%20Cordeiro%20de%20Siqueira%2C%201113%2C%20Jardim%20Santo%20Elias%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005136-001&amp;z=16&amp;hl=pt-BR&amp;output=embed" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)"></iframe>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Barbearia+AV1+Av.+El%C3%ADsio+Cordeiro+de+Siqueira+1113+S%C3%A3o+Paulo" target="_blank" rel="noopener" style="position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;background:#C8892B;color:#0B0B0B;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;box-shadow:0 6px 20px rgba(0,0,0,.45)" style-hover="background:#D99A3A;color:#0B0B0B">Abrir no Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="11 CTA final" style="position:relative;padding:clamp(100px,14vw,190px) 20px;background:#0B0B0B;overflow:hidden;text-align:center">
+  <img src="assets/tex-ambar.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(11,11,11,.35),rgba(11,11,11,.92) 70%)"></div>
+  <div data-reveal="" style="position:relative;max-width:860px;margin:0 auto">
+    <h2 style="margin:16px 0 0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(52px,9vw,116px);line-height:.92;text-wrap:balance">O café tá passado. Só falta você.</h2>
+    <p style="margin:22px 0 0;font-size:clamp(15px,1.6vw,18px);letter-spacing:.04em;color:#CFCFCF">Terça a domingo · Av. Elísio Cordeiro de Siqueira, 1113 · Pirituba</p>
+    <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="margin-top:44px;display:inline-flex;align-items:center;justify-content:center;min-height:68px;max-width:100%;padding:0 clamp(22px,6vw,48px);background:#C8892B;color:#0B0B0B;font-size:clamp(13px,3.6vw,15px);font-weight:600;letter-spacing:.14em;text-align:center;text-transform:uppercase;border-radius:2px;transition:box-shadow .3s ease, background .3s ease;gap:10px" style-hover="background:#D99A3A;color:#0B0B0B;box-shadow:0 0 48px rgba(200,137,43,.7)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#0B0B0B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>Agende pelo WhatsApp</a>
+    <div style="margin-top:20px;font-size:14px;color:#BDBDBD">(11) 96994-5003</div>
+  </div>
+</section>
+
+<footer style="background:#080808;border-top:1px solid #1E1E1E;padding:64px 20px 110px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <img src="assets/logo.webp" alt="Barbearia AV1 – André Moura" width="1000" height="285" loading="lazy" style="display:block;width:100%;max-width:280px;height:auto">
+    </div>
+    <div style="font-size:15px;line-height:1.8;color:#A8A8A8">
+      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B;margin-bottom:10px">Endereço</div>
+      Av. Elísio Cordeiro de Siqueira, 1113<br>Jardim Santo Elias · Pirituba · São Paulo/SP<br>CEP 05136-001
+    </div>
+    <div style="font-size:15px;line-height:1.8;color:#A8A8A8">
+      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B;margin-bottom:10px">Horários</div>
+      Ter a sex · 9h–19h<br>Sábado · 9h–18h<br>Domingo · 10h–13h<br>Segunda · fechado
+    </div>
+    <div style="font-size:15px;line-height:1.8;color:#A8A8A8;display:flex;flex-direction:column">
+      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8892B;margin-bottom:10px">Contato</div>
+      <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" style="color:#E8E8E8;display:inline-flex;align-items:center;gap:10px" style-hover="color:#C8892B"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#C8892B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg>(11) 96994-5003</a>
+      <a href="https://www.instagram.com/barbearia.av1/" target="_blank" rel="noopener" style="color:#E8E8E8" style-hover="color:#C8892B">@barbearia.av1</a>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:48px auto 0;padding-top:24px;border-top:1px solid #1A1A1A;font-size:13px;color:#8A8A8A">© {{ year }} Barbearia AV1 – André Moura. Todos os direitos reservados.</div>
+</footer>
+
+<sc-if value="{{ showFloat }}" hint-placeholder-val="{{ true }}">
+  <a href="https://wa.me/5511969945003?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp" style="position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:12px;min-height:58px;padding:0 22px 0 8px;background:#C8892B;color:#0B0B0B;border-radius:40px;box-shadow:0 10px 30px rgba(0,0,0,.55);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:box-shadow .3s ease, transform .3s ease" style-hover="color:#0B0B0B;box-shadow:0 0 36px rgba(200,137,43,.7);transform:translateY(-2px)">
+    <span style="width:42px;height:42px;border-radius:50%;background:#0B0B0B;color:#C8892B;display:grid;place-items:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#C8892B" style="flex-shrink:0"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.46 9.48-9.46a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.69c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.52A11.32 11.32 0 0 0 12.04.65C5.76.65.65 5.75.65 12.03c0 2.01.52 3.97 1.52 5.69L.55 23.6l6.03-1.58a11.36 11.36 0 0 0 5.45 1.39h.01c6.28 0 11.39-5.1 11.39-11.38 0-3.04-1.18-5.9-3.33-8.05z"></path></svg></span>
+    <span>{{ floatLabel }}</span>
+  </a>
+</sc-if>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Foto ampliada" onClick="{{ closeLb }}" style="position:fixed;inset:0;z-index:100;background:rgba(5,5,5,.94);display:flex;align-items:center;justify-content:center;padding:70px 16px">
+    <img src="{{ lbItem.src }}" alt="{{ lbItem.alt }}" style="max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6);filter:{{ photoFilter }}">
+    <button onClick="{{ closeLb }}" aria-label="Fechar" style="position:absolute;top:14px;right:14px;width:52px;height:52px;border-radius:50%;border:1px solid #444;background:#111;color:#E8E8E8;font-size:22px;cursor:pointer">×</button>
+    <button onClick="{{ prevLb }}" aria-label="Foto anterior" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid #444;background:#111;color:#E8E8E8;font-size:20px;cursor:pointer">←</button>
+    <button onClick="{{ nextLb }}" aria-label="Próxima foto" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid #444;background:#111;color:#E8E8E8;font-size:20px;cursor:pointer">→</button>
+    <div style="position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:13px;color:#A8A8A8">{{ lbCounter }}</div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;photoTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;quente&quot;,&quot;pb&quot;],&quot;default&quot;:&quot;quente&quot;,&quot;tsType&quot;:&quot;'quente'|'pb'&quot;,&quot;section&quot;:&quot;Fotos&quot;},&quot;floatingButton&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversão&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Depoimentos&quot;}}">
+const FILTERS = {
+  quente: 'grayscale(.25) sepia(.28) contrast(1.12) brightness(.82) saturate(1.1)',
+  pb: 'grayscale(1) contrast(1.18) brightness(.85)'
+};
+const REVIEWS = [
+  ['Priscila Mayara','Local Guide · 17 avaliações · 24 fotos','4 meses atrás','Essa barbearia é excelente!! Meu esposo e meus filhos só cortam nesse lugar. O atendimento é sempre incrível e o André tem muita paciência com os meninos. A Barbearia oficial dos meus pequenos desde o primeiro corte.','Cortes infantis'],
+  ['Paulo Ricardo Henritzi','Local Guide · 49 avaliações · 67 fotos','3 meses atrás','Já faz uns 12 anos que faço barba e cabelo com ele. Profissional da mais alta competência, ótimo atendimento, sempre educado, barbearia sempre limpa. Recomendo de olhos fechados.',''],
+  ['Marcelo Amaral','8 avaliações · 1 foto','3 meses atrás','Sempre corto com meu filho. Atendimento top. Ambiente familiar, recomendo!!',''],
+  ['Diego Fortunato','Local Guide · 38 avaliações','3 meses atrás','Os meninos mandam bem. Acompanho eles desde o outro salão. Feliz de ver a evolução deles. Deus abençoe.',''],
+  ['Tiago Lima','3 avaliações · 1 foto','3 meses atrás','Corte muito bom, atendimento rápido e eficiente !','Shampoo e condicionador, Cortes infantis'],
+  ['Rodrigo Batista De Aguilar Pereira','7 avaliações · 3 fotos','3 meses atrás','Atendimento excelente. Nota 10. Rápidos e profissionais.','']
+];
+const AV_COLORS = ['#8E5B2E','#1F3A93','#2E6B3A','#B22234','#5B4A8E','#A0522D','#2F5D6B','#7A6A2E','#6B2E4F'];
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, scrolled: false, menuOpen: false, rv: 0, lb: -1 };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onScroll = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onKey = (e) => {
+      if (this.state.lb < 0) return;
+      if (e.key === 'Escape') this.setState({ lb: -1 });
+      if (e.key === 'ArrowRight') this.stepLb(1);
+      if (e.key === 'ArrowLeft') this.stepLb(-1);
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.onScroll();
+    this.setupReveal();
+    this.applyFilter();
+    this.startAuto();
+    this.setupVideos();
+  }
+  componentDidUpdate(prev) {
+    if (prev.photoTreatment !== this.props.photoTreatment) this.applyFilter();
+    if (prev.autoplay !== this.props.autoplay) this.startAuto();
+    this.applyFilter();
+  }
+  prepVideo(v) {
+    if (v._av1) return; v._av1 = true;
+    const forced = v.hasAttribute('data-muted-loop');
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); v.setAttribute('autoplay', ''); v.setAttribute('loop', '');
+    v.removeAttribute('controls'); v.disablePictureInPicture = true;
+    if (forced) v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
+    if (v.preload !== 'auto') v.preload = 'auto';
+  }
+  playVideo(v) {
+    if (!v.paused) return;
+    if (v.hasAttribute('data-muted-loop') || !this._sound) v.muted = true;
+    const pr = v.play(); pr && pr.catch(() => {});
+  }
+  setupVideos() {
+    const all = () => [...document.querySelectorAll('video')];
+    all().forEach(v => { this.prepVideo(v); if (v.readyState === 0) v.load(); this.playVideo(v); });
+    if ('IntersectionObserver' in window) {
+      this.vio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) this.playVideo(e.target); }), { rootMargin: '200px 0px' });
+      all().forEach(v => this.vio.observe(v));
+    }
+    this.kick = () => all().forEach(v => this.playVideo(v));
+    ['touchstart', 'touchend', 'click', 'scroll'].forEach(ev => window.addEventListener(ev, this.kick, { passive: true }));
+    document.addEventListener('visibilitychange', this.kick);
+    this.vTimer = setInterval(() => all().forEach(v => { this.prepVideo(v); this.playVideo(v); }), 2000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.vTimer); this.vio && this.vio.disconnect();
+    ['touchstart', 'touchend', 'click', 'scroll'].forEach(ev => window.removeEventListener(ev, this.kick));
+    document.removeEventListener('visibilitychange', this.kick);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    clearInterval(this.timer);
+    this.io && this.io.disconnect();
+  }
+  filter() { return FILTERS[this.props.photoTreatment] || FILTERS.quente; }
+  applyFilter() {
+    const f = this.filter();
+    document.querySelectorAll('[data-photo]').forEach(el => { if (el.style.filter !== f) el.style.filter = f; });
+  }
+  setupReveal() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.style.opacity = '1'; en.target.style.transform = 'none'; this.io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    const scan = () => document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)';
+      this.io.observe(el);
+    });
+    scan(); setTimeout(scan, 600);
+  }
+  startAuto() {
+    clearInterval(this.timer);
+    if (this.props.autoplay === false) return;
+    this.timer = setInterval(() => this.scrollReview(1, true), 6000);
+  }
+  cardStep() { const t = this.track; const c = t && t.firstElementChild; return c ? c.getBoundingClientRect().width + 16 : 340; }
+  scrollReview(d, wrap) {
+    const t = this.track; if (!t) return;
+    const max = t.scrollWidth - t.clientWidth - 4;
+    if (wrap && d > 0 && t.scrollLeft >= max) t.scrollTo({ left: 0 });
+    else if (wrap && d < 0 && t.scrollLeft <= 4) t.scrollTo({ left: max + 4 });
+    else t.scrollBy({ left: d * this.cardStep() });
+  }
+  stepLb(d) { const n = (this.galImgs || []).length || 1; this.setState(s => ({ lb: (s.lb + d + n) % n })); }
+
+  renderVals() {
+    const { w, scrolled, menuOpen, rv, lb } = this.state;
+    const isDesk = w >= 1180;
+    const isLap = w >= 980;
+    const pole = (width, h) => React.createElement('div', { style: {
+      width, height: h, opacity: .9,
+      background: 'repeating-linear-gradient(-45deg,#B22234 0 10px,#E8E8E8 10px 20px,#1F3A93 20px 30px,#E8E8E8 30px 40px)',
+      animation: 'pole 2.4s linear infinite'
+    } });
+    return {
+      isDesk, isMobile: !isDesk, menuOpen, showMobileMenu: !isDesk && menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headerBg: scrolled || menuOpen ? 'rgba(11,11,11,.92)' : 'rgba(11,11,11,0)',
+      headerLine: scrolled ? '#1F1F1F' : 'transparent',
+      nav: [['Kids', '#kids'], ['Serviços', '#servicos'], ['Experiência', '#experiencia'], ['Equipe', '#equipe'], ['Galeria', '#galeria'], ['Contato', '#contato']].map(([label, href]) => ({ label, href })),
+      poleWide: pole('100%', 4),
+      poleShort: pole('120px', 4),
+      services: [
+        ['Corte', 'Tesoura, máquina, degradê, social ou navalha. A gente olha seu rosto antes de pegar a máquina.'],
+        ['Barba', 'Aparada, desenhada ou na navalha, com toalha quente e acabamento à moda antiga.'],
+        ['Corte + Barba', 'O pacote completo, com tempo de sobra na cadeira. Sem pressa, sem fila.'],
+        ['Corte infantil', 'Para crianças, na cadeira de carrinho, com paciência de sobra.'],
+        ['Sobrancelha', "Limpeza e alinhamento discretos, sem cara de 'fez sobrancelha'."],
+        ['Lavagem e cabeça raspada', 'Shampoo e condicionador no lavatório, com massagem no couro cabeludo. Cabeça raspada na máquina ou na navalha.']
+      ].map(([name, desc], i) => ({ n: String(i + 1).padStart(2, '0'), name, desc, wa: 'https://wa.me/5511969945003?text=' + encodeURIComponent('Olá! Vim pelo site e quero agendar: ' + name + '.') })),
+      perks: [
+        ['Café na hora', 'Sempre passado, sempre por conta da casa.'],
+        ['Conversa boa', 'Futebol, bairro, vida. Assunto nunca falta.'],
+        ['Rosto conhecido', 'Quem vem uma vez vira parte da roda.'],
+        ['Sem pressa', 'Ninguém aqui corta olhando o relógio.']
+      ].map(([t, d]) => ({ t, d })),
+      expCols: w >= 1000 ? '2fr 1fr' : w >= 600 ? 'minmax(0,1.4fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      kidsTextOrder: isLap ? 0 : 1,
+      prodTextOrder: 0,
+      galleryCols: w >= 900 ? 5 : 2,
+      galleryRow: w >= 1100 ? '210px' : w >= 700 ? '180px' : '150px',
+      wideSpan: w >= 700 ? 2 : 2,
+      openLb: (e) => { const all = [...document.querySelectorAll('[data-gal] img')]; this.galImgs = all; const i = all.indexOf(e.currentTarget.querySelector('img')); this.setState({ lb: Math.max(0, i) }); },
+      trackRef: (el) => { this.track = el; },
+      onTrackScroll: () => { const t = this.track; if (!t) return; const i = Math.round(t.scrollLeft / this.cardStep()); if (i !== this.state.rv) this.setState({ rv: i }); },
+      reviews: REVIEWS.map(([name, meta, when, text, service], i) => ({ name, meta, when, text, service, hasService: !!service, initial: name[0], color: AV_COLORS[i % AV_COLORS.length] })),
+      dots: REVIEWS.map((_, i) => ({ go: () => { this.track && this.track.scrollTo({ left: i * this.cardStep() }); this.startAuto(); }, label: 'Avaliação ' + (i + 1), w: i === rv ? '18px' : '8px', bg: i === rv ? '#C8892B' : '#4A4A4A' })),
+      prevReview: () => { this.scrollReview(-1, true); this.startAuto(); },
+      nextReview: () => { this.scrollReview(1, true); this.startAuto(); },
+      productTags: ['Pomadas', 'Balms', 'Óleos para barba', 'Shampoos'],
+      hours: [['Terça a sexta', '9h – 19h'], ['Sábado', '9h – 18h'], ['Domingo', '10h – 13h'], ['Segunda', 'Fechado']].map(([d, t]) => ({ d, t, c: t === 'Fechado' ? '#8A8A8A' : '#E8E8E8' })),
+      year: new Date().getFullYear(),
+      soundOn: !!this.state.soundOn,
+      soundOff: !this.state.soundOn,
+      videoRef: this.videoRef || (this.videoRef = (v) => {
+        this.video = v;
+        if (!v) return;
+        v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true;
+        v.setAttribute('muted', '');
+        const keep = () => { if (!this._sound && !v.muted) v.muted = true; };
+        v.addEventListener('play', keep); v.addEventListener('volumechange', keep); v.addEventListener('loadeddata', keep);
+        const p = v.play(); p && p.catch(() => {});
+      }),
+      soundText: this.state.soundOn ? 'Desativar som' : 'Ativar som',
+      soundLabel: this.state.soundOn ? 'Desativar som do vídeo' : 'Ativar som do vídeo',
+      soundDot: this.state.soundOn ? '#C8892B' : '#6A6A6A',
+      toggleSound: () => {
+        const v = this.video;
+        const on = !this.state.soundOn; this._sound = on;
+        if (v) { v.muted = !on; if (on) { v.volume = 1; const p = v.play(); p && p.catch(() => {}); } }
+        this.setState({ soundOn: on });
+      },
+      showFloat: this.props.floatingButton !== false,
+      floatLabel: w >= 768 ? 'Agendar no WhatsApp' : 'Agendar',
+      lbOpen: lb >= 0,
+      lbItem: lb >= 0 && this.galImgs && this.galImgs[lb] ? { src: this.galImgs[lb].currentSrc || this.galImgs[lb].src, alt: this.galImgs[lb].alt } : { src: '', alt: '' },
+      lbCounter: lb >= 0 && this.galImgs ? (lb + 1) + ' / ' + this.galImgs.length : '',
+      photoFilter: this.filter(),
+      closeLb: (e) => { if (e && e.target !== e.currentTarget && e.target.tagName === 'IMG') return; this.setState({ lb: -1 }); },
+      prevLb: (e) => { e.stopPropagation(); this.stepLb(-1); },
+      nextLb: (e) => { e.stopPropagation(); this.stepLb(1); }
+    };
+  }
+}
+</script>
+</body>
+</html>
